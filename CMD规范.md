@@ -90,20 +90,45 @@ define(function(require, exports, module) {
 });
 ```
 
+increment.js
+```js
+define(function(require, exports, module) {
+  var add = require('math').add;
+  exports.increment = function(val) {
+    return add(val, 1);
+  };
+});
+```
 
- 
+program.js
+```js
+define(function(require, exports, module) {
+  var inc = require('increment').increment;
+  var a = 1;
+  inc(a);
+  
+  module.id == "program";
+});
+```
 
+**Wrapped modules with non-function factory**
 
+object-data.js
+```js
+define({
+  foo: "bar"
+});
+```
 
+array-data.js
+```js
+define([
+  'foo',
+  'bar'
+]);
+```
 
-
-
-
-
-
-
-
-
-
-
-
+string-data.js
+```js
+define('foo bar');
+```
