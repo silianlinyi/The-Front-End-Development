@@ -48,6 +48,48 @@ define(function(require, exports, module) {
     as the order in the first argument.
     3. If requested module cannot be returned, the callback should receive null correspondingly.
 
+### The `exports` Object
+
+In a module, there is a free variable called "exports", that is an object that the module may add its API to as it executes.
+
+### The `module` Object
+
+1. `module.uri`
+
+    The full resolved uri to the module.
+
+2. `module.exports`
+
+    The exported API of the module. It is the same as `exports` object.
+
+## Module Identifier
+
+1. A module identifier is and must be a **literal** string.
+2. Module identifiers may not have a filename extension like `.js`.
+3. Module identifiers should be dash-joined string, such as `foo-bar`.
+4. Module identifiers can be a relative path, like `./foo` and `../bar`.
+
+
+## Sample Code
+
+**A typical sample**
+
+math.js
+```js
+define(function(require, exports, module) {
+  exports.add = function() {
+    var sum = 0,
+        i = 0,
+        args = arguments,
+        l = args.length;
+    while(i < 1) {
+      sum += args[i++];
+    }
+    return sum;
+  };
+});
+```
+
 
  
 
